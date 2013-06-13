@@ -9,6 +9,9 @@ $(function(){
         dataType: "jsonp"
       });
     }
-    else{ $(this).next().css('display', 'none'); }
+    else{ 
+	  $(this).next().removeClass('show');
+	  $(this).next().addClass('hide');
+	}
   });
 });

@@ -1,4 +1,4 @@
-.row
+.row-fluid
   .span5{style: "height: 450px;"}
     %br
     %br
@@ -21,7 +21,7 @@
       = number_to_human(Ref::Entry.count)
       = "articles delivered since launch (#{(Time.now.to_date - Date.new(2013, 6, 3)).to_i.to_s} days ago)"
     = image_tag "home.png"
-.row
+.row-fluid
   .span4
     .well
       %h3 Back-up
@@ -36,7 +36,7 @@
     .well
       %h3 Read Later
       Come across an article and want to read it later? Simply click on the spectacles icon and later retrive the articles from the TO READ Folder.
-.row
+.row-fluid
   .span4
     .well
       %h3 Social Share

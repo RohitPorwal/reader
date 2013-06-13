@@ -23,9 +23,8 @@
                             %ul{class: "dropdown-menu", role: "menu", "aria-labelledby"=>"dLabel#{r.id}"}
                               %li= link_to "Refresh", request_fetch_user_my_feed_path(current_user, r), style: "font-size: 12px; padding: 2px 5px;"
                               %li= link_to "Unsubscribe",  user_my_feed_path(current_user, r), :method => :delete, :data => { :confirm => t("delete.c") }, style: "font-size: 12px; padding: 2px 5px;"
-                        %td.span2
+                        %td.span1
                           %a{href: user_path(current_user, :akid => r.id), style: "padding: 0px; margin: 0px;"}= image_tag r.favicon
-                        %td &nbsp;&nbsp;
                         %td.span9.black
                           - if !feed_name(@user, r).blank?
                             %a{href: user_path(current_user, :akid => r.id), style: "padding: 0px; margin: 0px;"}= feed_name(@user, r).html_safe
@@ -46,9 +45,8 @@
                       %ul{class: "dropdown-menu", role: "menu", "aria-labelledby"=>"dLabel#{r.id}"}
                         %li= link_to "Refresh", request_fetch_user_my_feed_path(current_user, r), style: "font-size: 12px; padding: 2px 5px;"
                         %li= link_to "Unsubscribe",  user_my_feed_path(current_user, r), :method => :delete, :data => { :confirm => t("delete.c") }, style: "font-size: 12px; padding: 2px 5px;"
-                  %td.span2
+                  %td.span1
                     %a{href: user_path(current_user, :akid => r.id), style: "padding: 0px; margin: 0px;"}= image_tag r.favicon
-                  %td &nbsp;&nbsp;
                   %td.span9.black
                     - if !feed_name(@user, r).blank?
                       %a{href: user_path(current_user, :akid => r.id), style: "padding: 0px; margin: 0px;"}= feed_name(@user, r).html_safe

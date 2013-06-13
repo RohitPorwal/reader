@@ -13,8 +13,10 @@ id_card-shadow.png: id_card-shadow-7716dc190160aa4858da8e6e98f8e2b2.png
 id_card-shadow/index.png: id_card-shadow-7716dc190160aa4858da8e6e98f8e2b2.png
 id_card.png: id_card-7ba3cfc5d10137510876c2cda38fcc86.png
 id_card/index.png: id_card-7ba3cfc5d10137510876c2cda38fcc86.png
-logo.png: logo-ab9e1a64030746e6a1673006955b97a6.png
-logo/index.png: logo-ab9e1a64030746e6a1673006955b97a6.png
+logo.png: logo-848e9c989fc329af16126581c4c78a04.png
+logo/index.png: logo-848e9c989fc329af16126581c4c78a04.png
+logo_big.png: logo_big-ab9e1a64030746e6a1673006955b97a6.png
+logo_big/index.png: logo_big-ab9e1a64030746e6a1673006955b97a6.png
 mark_read.png: mark_read-10a4d559f2e2ab0cbc6a6984dd1ebec4.png
 mark_read/index.png: mark_read-10a4d559f2e2ab0cbc6a6984dd1ebec4.png
 mark_to_read.png: mark_to_read-13edf9500322365d4623605bcea96f1d.png
@@ -57,8 +59,8 @@ stars/star9.png: stars/star9-9fb14341de0ee612074ff45e0525b9cc.png
 stars/star9/index.png: stars/star9-9fb14341de0ee612074ff45e0525b9cc.png
 top.png: top-b5ddc9c75f0a02c73819387eec6ce892.png
 top/index.png: top-b5ddc9c75f0a02c73819387eec6ce892.png
-application.js: application-b9e3c49b49a089a7b24eeafbb3620738.js
-application/index.js: application-b9e3c49b49a089a7b24eeafbb3620738.js
+application.js: application-af07a94e506849381a28d3684e9b6417.js
+application/index.js: application-af07a94e506849381a28d3684e9b6417.js
 application.css: application-7b0256c0e525aaff22737b6a18d04967.css
 application/index.css: application-7b0256c0e525aaff22737b6a18d04967.css
 jquery.min.map: jquery.min-8b58c0fbf303b938d8e749262f7e50dd.map
