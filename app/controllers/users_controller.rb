@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     @without_tags = MyFeed.without_tags(@user)
     @my_feed = MyFeed.new
     @total_subscriptions = @user.entries_count(nil, nil)
-    if !params[:entry].blank?
+    if params[:entry].present?
       @feed_article = MyEntry.find(params[:entry])
       @feed_article.update_attributes(is_to_read: false, last_clicked_on: Time.now)
       @history_count = @user.entries_count('h' , nil)
@@ -41,13 +41,13 @@ class UsersController < ApplicationController
     @to_read = params[:r]
     @akid = params[:akid]
     @home = (params[:r].blank? and params[:h].blank? and params[:s].blank? and params[:akid].blank?) ? true : false 
-    if !params[:h].blank?
+    if params[:h].present?
       @entries = MyEntry.read.by_user(@user).page(params[:page]).per(User::PER_PAGE)
-    elsif !params[:r].blank?
+    elsif params[:r].present?
       @entries = MyEntry.to_read.by_user(@user).page(params[:page]).per(User::PER_PAGE)
-    elsif !params[:s].blank?
+    elsif params[:s].present?
       @entries = MyEntry.star.by_user(@user).page(params[:page]).per(User::PER_PAGE)
-    elsif !params[:akid].blank?
+    elsif params[:akid].present?
       @entries = MyEntry.where("my_entries.my_feed_id = ?", params[:akid]).page(params[:page]).per(User::PER_PAGE)
     else
       @entries = MyEntry.by_user(@user).page(params[:page]).per(User::PER_PAGE)

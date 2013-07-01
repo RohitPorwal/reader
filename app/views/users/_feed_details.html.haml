@@ -1,11 +1,11 @@
-- if !(@feed_article.blank? or (f.id != @feed_article.id and !@feed_article.blank?))
-  - if !f.name.blank?
+- if !(@feed_article.blank? or (f.id != @feed_article.id and @feed_article.present?))
+  - if f.name.present?
     %h3= link_to f.name, user_my_entry_path(current_user, f), target: "_blank", class: "red"
-  - if f.id == @feed_article.id
-    - if !@feed_article.content.blank?
+  - if f.id.eql? @feed_article.id
+    - if @feed_article.content.present?
       %br
       = @feed_article.content.to_s.html_safe
-    - elsif !@feed_article.summary.blank?
+    - elsif @feed_article.summary.present?
       %br
       = @feed_article.summary.to_s.html_safe
   %br

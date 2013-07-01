@@ -4,7 +4,7 @@ class Job::Dj3 < Struct.new(:akid)
   
   def perform
     my_feed = MyFeed.find(akid)
-    if !my_feed.blank?
+    if my_feed.present?
       my_feed.my_entries.destroy_all
       my_feed.destroy
     end

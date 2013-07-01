@@ -32,7 +32,7 @@ module ApplicationHelper
       i = 105 - (7 + f.my_feed.entity_name.to_s.length)
       str = str + "<span class='f11 gray'>#{f.my_feed.entity_name}</span> &nbsp;&nbsp;&nbsp;"
     end
-    if !f.name.blank?
+    if f.name.present?
       if f.is_read
         if i < f.name.to_s.length
           str = str + "<span class='black'>#{f.name[0..i]}...</span>"

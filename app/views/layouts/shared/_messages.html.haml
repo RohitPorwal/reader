@@ -1,5 +1,5 @@
 - flash.each do |name, msg|
-  - if !msg.blank? 
+  - if msg.present? 
     %br
     %br
     %div{ class: name.to_s != "error" ? "alert alert-success" : "alert alert-error"}

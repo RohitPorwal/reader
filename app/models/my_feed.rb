@@ -67,13 +67,13 @@ class MyFeed < ActiveRecord::Base
   
   def no_duplicate_accounts_please
     a = MyFeed.where(feed_id: self.feed_id, user_id: self.user_id).first
-    errors.add(:app_url, "duplicate RSS url") if !a.blank?
-    if !self.app_url.blank?
+    errors.add(:app_url, "duplicate RSS url") if a.present?
+    if self.app_url.present?
       self.app_url = Ref::Feed.sanitise_url(self.app_url)
       feed_obj = Ref::Feed.where(app_url: self.app_url).first
-      if !feed_obj.blank?
+      if feed_obj.present?
         a = MyFeed.where(feed_id: feed_obj.id, user_id: self.user_id).first
-        errors.add(:app_url, "duplicate RSS url") if !a.blank?
+        errors.add(:app_url, "duplicate RSS url") if a.present?
       end
     end
     true

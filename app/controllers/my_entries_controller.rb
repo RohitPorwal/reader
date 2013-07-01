@@ -23,9 +23,9 @@ class MyEntriesController < ApplicationController
   end
 
   def update
-    if !params[:is_star].blank?
+    if params[:is_star].present?
       @feed_article.update_attributes(is_star: params[:is_star])
-    elsif !params[:is_to_read].blank?
+    elsif params[:is_to_read].present?
       @feed_article.update_attributes(is_to_read: params[:is_to_read])
     end
     redirect_to :back

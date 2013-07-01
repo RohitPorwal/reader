@@ -18,7 +18,7 @@
           .span4
             %br
           .span5.f11.right
-            - if !current_user.blank?
+            - if current_user.present?
               %ul.nav.nav-pills{id: "feed_status"}
                 %li{id: "marked_to_read_feeds", class: @to_read.blank? ? nil : "active"}= link_to "To Read (#{@to_read_count})", user_path(current_user, :r => true)
                 %li{id: "starred_feeds", class: @is_star.blank? ? nil : "active"}= link_to "Stared (#{@star_count})", user_path(current_user, :s => true)
@@ -26,8 +26,8 @@
                 %li= link_to "Sign Out".html_safe, sign_out_path
             - else
               %ul.nav.nav-pills
-                %li{class: (action_name == "developer") ? "active" : nil}= link_to "Developer", developer_path, style: "text-decoration: none;"
-                %li{class: (action_name == "about") ? "active" : nil}= link_to "About", about_path, style: "text-decoration: none;"
+                %li{class: (action_name.eql? "developer") ? "active" : nil}= link_to "Developer", developer_path, style: "text-decoration: none;"
+                %li{class: (action_name.eql? "about") ? "active" : nil}= link_to "About", about_path, style: "text-decoration: none;"
     .container-fluid
       .row-fluid
         .span12= render partial: "layouts/shared/messages"

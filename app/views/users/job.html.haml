@@ -25,13 +25,13 @@
                   %b= d.func
                   %span.f11.gray= d.handler.gsub("--- !ruby/struct:", "")
                 %td
-                  - if !d.my_feed.blank?
+                  - if d.my_feed.present?
                     = d.my_feed.entity_name
                 %td
-                  - if !d.user.blank?
+                  - if d.user.present?
                     = d.user.name
                 %td
-                  - if !d.last_error.blank?
+                  - if d.last_error.present?
                     = d.last_error.to_s[0..600]
         = paginate @delayedjobs
 

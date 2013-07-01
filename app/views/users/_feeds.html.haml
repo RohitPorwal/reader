@@ -15,7 +15,7 @@
         #comments
           %a{class: "fetchFeed", id: f.id, user: current_user.id}
             .comment-header
-              - if !feed_title(f).blank?
+              - if feed_title(f).present?
                 = feed_title(f).html_safe
           %div{class: "comment-body hide" }
             = render partial: "feed_details"

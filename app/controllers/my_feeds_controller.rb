@@ -51,7 +51,7 @@ class MyFeedsController < ApplicationController
   private
   
   def allowed?
-    @my_feed = MyFeed.find(params[:id]) if !params[:id].blank?
+    @my_feed = MyFeed.find(params[:id]) if params[:id].present?
   end
   
 end

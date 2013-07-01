@@ -16,7 +16,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if a.blank?
       Authentication.create(user_id: user.id, provider: "google_oauth2", uid: e["uid"], refresh_token: e["credentials"]["refresh_token"], expires_at: Time.now +  e["credentials"]["expires_at"], token: e["credentials"]["token"],raw_info: e.to_s)
     else
-      if a.refresh_token.blank? and !e["credentials"]["refresh_token"].blank?
+      if a.refresh_token.blank? and e["credentials"]["refresh_token"].present?
         a.update_attributes(token: e["credentials"]["token"], expires_at: Time.now +  e["credentials"]["expires_at"], raw_info: e.to_s, refresh_token: e["credentials"]["refresh_token"])
       else
         a.update_attributes(token: e["credentials"]["token"], expires_at: Time.now +  e["credentials"]["expires_at"], raw_info: e.to_s)

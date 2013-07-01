@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   private
   
   def user_is_the_one_who_is_logged_in
-    if !current_user.blank?
+    if current_user.present?
       @user = current_user
       @history_count = @user.entries_count('h' , nil)
       @star_count = @user.entries_count('s' , nil)

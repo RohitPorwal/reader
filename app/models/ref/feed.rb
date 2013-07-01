@@ -26,7 +26,7 @@ class Ref::Feed < ActiveRecord::Base
   end
   
   def self.sanitise_url(a)
-    if !a.blank?
+    if a.present?
       return a.gsub("feed/http://", "http://").gsub("feed/https://", "http://").gsub("https://", "http://")
     end
     return a

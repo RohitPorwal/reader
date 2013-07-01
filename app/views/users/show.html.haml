@@ -2,18 +2,18 @@
   %div{class: "span3", id: "leftPanel"}
     = link_to "All Feeds (#{@total_subscriptions})", user_path(current_user), style: @home.blank? ? "color: black;" : "font-weight: bold; color: black;"
     %br
-    - if !@tags.first.blank?
+    - if @tags.first.present?
       - @tags.each do |t|
         - apps = t.tag_entries
-        - if !apps.blank?
-          - if !apps.first.blank?
+        - if apps.present?
+          - if apps.first.present?
             %br
             %b= t.name
             %ul.nav.nav-tabs.nav-stacked.sidebar
               - apps.each do |rr|
                 - r = rr.my_feed
-                - if !r.blank?
-                  %li.f11{class: @akid == r.id.to_s ? "active" : nil}
+                - if r.present?
+                  %li.f11{class: @akid.eql? r.id.to_s ? "active" : nil}
                     %table
                       %tr
                         %td.span1
@@ -26,16 +26,16 @@
                         %td.span1
                           %a{href: user_path(current_user, :akid => r.id), style: "padding: 0px; margin: 0px;"}= image_tag r.favicon
                         %td.span9.black
-                          - if !feed_name(@user, r).blank?
+                          - if feed_name(@user, r).present?
                             %a{href: user_path(current_user, :akid => r.id), style: "padding: 0px; margin: 0px;"}= feed_name(@user, r).html_safe
 
-    - if !@without_tags.first.blank?
+    - if @without_tags.first.present?
       %br
       %b Subscriptions
       %ul.nav.nav-tabs.nav-stacked{id: "2"}
         - @without_tags.each do |r|
-          - if !r.blank?
-            %li.f11{class: @akid == r.id.to_s ? "active" : nil}
+          - if r.present?
+            %li.f11{class: @akid.eql? r.id.to_s ? "active" : nil}
               %table
                 %tr
                   %td.span1
@@ -48,7 +48,7 @@
                   %td.span1
                     %a{href: user_path(current_user, :akid => r.id), style: "padding: 0px; margin: 0px;"}= image_tag r.favicon
                   %td.span9.black
-                    - if !feed_name(@user, r).blank?
+                    - if feed_name(@user, r).present?
                       %a{href: user_path(current_user, :akid => r.id), style: "padding: 0px; margin: 0px;"}= feed_name(@user, r).html_safe
 
   %div{class: "span9", id: "feedsHolder"}
