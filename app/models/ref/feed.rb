@@ -21,38 +21,6 @@ class Ref::Feed < ActiveRecord::Base
   #CUSTOM SCOPES
   #OTHER METHODS
     
-  def self.import(u, a_json)
-    a_json.each do |t|
-      url_u = Ref::Feed.sanitise_url(t[0])
-      feed_exists = Ref::Feed.where(app_url: url_u).first
-      if feed_exists.blank?
-        feed_exists = Ref::Feed.new(app_url: url_u, entity_name: t[1], html_url: t[2])
-        feed_exists.save
-        exists = false
-      else
-        exists = true
-      end
-      if !feed_exists.blank?
-        if !feed_exists.id.blank?
-          my_feed = MyFeed.create_and_save(feed_exists.id, u.id, t[3])
-          if exists
-            Delayed::Job.enqueue Job::Dj2.new(my_feed.id, u.id)
-          end
-          if !t[5].blank?
-            if !t[5].first.blank?
-              t[5].each do |t_g|
-                tag_o = u.tags.where(name: t_g).first
-                if !tag_o.blank?
-                  TagEntry.import(my_feed.id, tag_o.id)
-                end              
-              end
-            end
-          end
-        end
-      end
-    end
-  end
-  
   def to_s
     self.entity_name
   end

@@ -17,14 +17,6 @@ class Tag < ActiveRecord::Base
   #CALLBACKS  
   #SCOPES  
   #OTHER METHODS
-  def self.import(u, a_json)
-    a_json.each do |t|
-      if u.tags.where(name: t[0]).first.blank?
-        Tag.create(user_id: u.id, name: t[0], sort_id: t[1])
-      end
-    end
-  end
-  
   #JOBS
   #PRIVATE
   private

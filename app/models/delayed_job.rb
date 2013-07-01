@@ -18,8 +18,6 @@ class DelayedJob < ActiveRecord::Base
       return "Refresh"
     elsif !handler.to_s.index("ruby/struct:Dj3").blank?
       return "Unsubscribe"
-    elsif !handler.to_s.index("ruby/struct:Dj4").blank?
-      return "New Account"
     end
   end
   

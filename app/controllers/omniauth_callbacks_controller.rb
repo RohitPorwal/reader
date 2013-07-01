@@ -28,8 +28,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       user.my_feeds.each do |ak|
         Delayed::Job.enqueue Job::Dj1.new(ak.feed.id)
       end
-    else
-      Delayed::Job.enqueue Job::Dj4.new(user.id)
     end 
   end
 
