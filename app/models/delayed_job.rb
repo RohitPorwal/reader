@@ -34,15 +34,13 @@ class DelayedJob < ActiveRecord::Base
   def user
     if handler.to_s.index("uid: ").present?
       a = handler.to_s.split("\n")
-      if a.present?
-        if a[1].present?
-          akid = a[1].gsub("uid: ", "").gsub("'", "")
-          if akid.present? and akid != "0" and akid.to_i != 0
-            begin
-              return User.find(akid.to_i)
-            rescue
-              return nil
-            end
+      if a.try(:second).present?
+        akid = a[1].gsub("uid: ", "").gsub("'", "")
+        if akid.present? and akid != "0" and akid.to_i != 0
+          begin
+            return User.find(akid.to_i)
+          rescue
+            return nil
           end
         end
       end
@@ -53,17 +51,15 @@ class DelayedJob < ActiveRecord::Base
   def my_feed
     if handler.to_s.index("akid: ").present? or handler.to_s.index("fhub: ").present?
       a = handler.to_s.split("\n")
-      if a.present?
-        if a[1].present?
-          akid = a[1].gsub("fhub: ", "").gsub("akid: ", "").gsub("'", "")
-          if akid.present? and akid != "0" and akid.to_i != 0
-            begin
-              return Ref::Feed.find(akid.to_i)
-            rescue
-              return nil
-            end
+      if a.try(:second).present?
+        akid = a[1].gsub("fhub: ", "").gsub("akid: ", "").gsub("'", "")
+        if akid.present? and akid != "0" and akid.to_i != 0
+          begin
+            return Ref::Feed.find(akid.to_i)
+          rescue
+            return nil
           end
-        end 
+        end
       end
     end
     return nil
