@@ -13,7 +13,7 @@
               - apps.each do |rr|
                 - r = rr.my_feed
                 - if r.present?
-                  %li.f11{class: @akid.eql? r.id.to_s ? "active" : nil}
+                  %li.f11{class: @akid.eql?(r.id.to_s) ? "active" : nil}
                     %table
                       %tr
                         %td.span1
@@ -35,7 +35,7 @@
       %ul.nav.nav-tabs.nav-stacked{id: "2"}
         - @without_tags.each do |r|
           - if r.present?
-            %li.f11{class: @akid.eql? r.id.to_s ? "active" : nil}
+            %li.f11{class: @akid.eql?(r.id.to_s) ? "active" : nil}
               %table
                 %tr
                   %td.span1

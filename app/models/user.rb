@@ -50,17 +50,17 @@ class User < ActiveRecord::Base
   end
     
   def is_admin?
-    (email.eql? "rp@pykih.com" or email.eql? "ritvij.j@gmail.com" or email.eql? "modimihir@gmail.com") ? true : false
+    (email.eql?("rp@pykih.com") or email.eql?("ritvij.j@gmail.com") or email.eql?("modimihir@gmail.com")) ? true : false
   end
   
   def entries_count(g, akid)
-     if g.eql? "h"
+     if g.eql?("h")
        return MyEntry.read.by_user(self).count.to_s
-     elsif g.eql? "r"
+     elsif g.eql?("r")
        return MyEntry.to_read.by_user(self).count.to_s
-     elsif g.eql? "s"
+     elsif g.eql?("s")
        return MyEntry.star.by_user(self).count.to_s
-     elsif g.eql? "a"
+     elsif g.eql?("a")
        return MyEntry.where("my_entries.my_feed_id = ?", akid).count.to_s
      else
        return MyEntry.by_user(self).count.to_s
@@ -77,7 +77,7 @@ class User < ActiveRecord::Base
   end
   
   def non_device_forms
-    incoming_channel.eql? "change_password" ? true : false
+    incoming_channel.eql?("change_password") ? true : false
   end
     
 end

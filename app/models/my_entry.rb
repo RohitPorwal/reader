@@ -83,7 +83,7 @@ class MyEntry < ActiveRecord::Base
   
   def before_save_set
     self.current_star = "star0" if self.current_star.blank?
-    self.is_star = false        if self.current_star.eql? "star0"
+    self.is_star = false        if self.current_star.eql?("star0")
     true
   end
   
