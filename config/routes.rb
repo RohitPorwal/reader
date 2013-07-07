@@ -4,6 +4,9 @@ RedFeed::Application.routes.draw do
   
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
   
+  match 'users/tags/edit'  => 'tags#edit'
+  match 'tag/move_to_folder' => 'tags#move_to_folder'
+  
   devise_scope :user do
     get "sign_out", :to => "devise/sessions#destroy", as: :sign_out
     get "sign_in", :to => "static_pages#index", as: :sign_in
